@@ -20,6 +20,10 @@ jobs:
          curl -s -o start.sh -L "https://raw.githubusercontent.com/JohnnyNetsec/github-vm/main/mac/login.sh"
          chmod +x login.sh
          bash login.sh
+         sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart \
+         -activate -configure -access -on \
+         -restart -agent -privs -all
+         sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate off
          
     - name: MacOS System running...
       uses: mxschmitt/action-tmate@v2
